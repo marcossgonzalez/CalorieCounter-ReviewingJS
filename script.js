@@ -29,7 +29,29 @@ function getCaloriesFromInputs(list) {
         const currVal = cleanInputString(item.value);
         const invalidInputMatch = isInvalidInput(currVal);
         if (invalidInputMatch) {
-            
+            alert(`Invalid Input: ${invalidInputMatch[0]}`);
+            isError = true;
+            return null;
         }
+    }
+    calories += Number(currVal);
+    return calories;
+}
+function calculateCalories(e) {
+    e.preventDefault();
+    isError = false;
+    dinnerNumberInputs = document.querySelectorAll('#dinner input[type=number]');
+    snacksNumberInputs = document.querySelectorAll('#snacks input[type=number]');
+    exerciseNumberInputs = document.querySelectorAll('#exercise input[type=number]');
+    lunchNumberInputs = document.querySelectorAll('#lunch input[type=number]');
+    const breakfastNumberInputs = document.querySelectorAll('#breakfast input[type=number]');
+    const lunchCalories = getCaloriesFromInputs(lunchNumberInputs);
+    const breakfastCalories = getCaloriesFromInputs(breakfastNumberInputs);
+    const dinnerCalories = getCaloriesFromInputs(dinnerNumberInputs);
+    const snacksCalories = getCaloriesFromInputs(snacksNumberInputs);
+    const exerciseCalories = getCaloriesFromInputs(exerciseNumberInputs);
+    const budgetCalories = getCaloriesFromInputs([budgetNumberInput]);
+    if (isError) {
+        return   
     }
 }
